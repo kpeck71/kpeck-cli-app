@@ -1,2 +1,0 @@
-class Newbie::CLI
-end
