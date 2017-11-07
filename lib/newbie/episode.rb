@@ -1,0 +1,2 @@
+class Newbie::Episode
+end
