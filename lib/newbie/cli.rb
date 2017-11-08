@@ -13,6 +13,15 @@ class Newbie::CLI
   end
   
   def options
-    puts "option test"
+    input = nil
+    while input != "exit"
+      puts "Which episode would you like to learn more about? Please enter the episode number:"
+      number = gets.strip
+      if number.to_i <= TestingCli::Episode.all.size
+        episode = TestingCli::Episode.all[-(number.to_i)]
+        puts "#{episode.title}"
+        puts "#{episode.short_des}"
+      end
+    end
   end
 end
