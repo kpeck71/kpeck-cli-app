@@ -9,4 +9,8 @@ class Newbie::Episode
   def save
     @@all << self
   end
+  
+  def content
+    @content ||= TestingCli::Scraper.new(url).scrape_details
+  end
 end
