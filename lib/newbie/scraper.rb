@@ -10,4 +10,10 @@ class Newbie::Scraper
       episode.save
     end
   end
+  
+  def scrape_details
+    @doc = Nokogiri::HTML(open("https://www.codenewbie.org#{@url}"))
+    puts "Here is a fake description until I figure out this dang scraping. Not all the episode pages have the same layouts. Oh nooooo!"
+  end
+  
 end
