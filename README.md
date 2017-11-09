@@ -1,15 +1,13 @@
-# TestingCli
+# Code Newbie CLI Gem
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/testing_cli`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+You can install this gem via gem install kpeck-cli-app-gem. The newbie CLI will be installed and you can run newbie to get a list of all the episodes of the podcast Code Newbie, plus more information on each episode, right in your command line.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'testing_cli'
+gem 'newbie'
 ```
 
 And then execute:
@@ -18,11 +16,11 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install testing_cli
+    $ gem install newbie
 
 ## Usage
 
-TODO: Write usage instructions here
+Run: newbie after installing the gem.
 
 ## Development
 
