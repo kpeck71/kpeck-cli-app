@@ -1,6 +1,5 @@
 class Newbie::CLI
   def call
-    puts "Testing 1-2-3"
     Newbie::Scraper.new.scrape_episodes
     print_episodes
     options
@@ -11,16 +10,16 @@ class Newbie::CLI
       puts ep.title
     end
   end
-  
+
  def options
     input = nil
     while input != "exit"
       puts " "
       puts "Which episode would you like to learn more about? Please enter the episode number:"
-      num_episodes = TestingCli::Episode.all.size
+      num_episodes = Newbie::Episode.all.size
       answer = gets.strip
       if answer.to_i <= num_episodes && answer.to_i != 0
-        episode = TestingCli::Episode.all[-(answer.to_i)] #make sure 0 is not a valid entry
+        episode = Newbie::Episode.all[-(answer.to_i)] #make sure 0 is not a valid entry
         puts "#{episode.title}"
         puts "#{episode.short_des}"
         puts "\nIf you would like to learn more about this episode, enter 'more'. To see full list of episodes again, enter 'list', or type 'exit'."
@@ -54,6 +53,4 @@ class Newbie::CLI
       end
     end
   end
-
-end
 end

@@ -1,7 +1,7 @@
 class Newbie::Episode
   attr_accessor :title, :short_des, :url, :date, :content
   @@all = []
-  
+
   def self.all
     @@all
   end
@@ -9,8 +9,8 @@ class Newbie::Episode
   def save
     @@all << self
   end
-  
+
   def content
-    @content ||= TestingCli::Scraper.new(url).scrape_details
+    @content ||= Newbie::Scraper.new.scrape_details
   end
 end
