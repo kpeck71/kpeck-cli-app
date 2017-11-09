@@ -21,6 +21,19 @@ class Newbie::CLI
         episode = TestingCli::Episode.all[-(number.to_i)]
         puts "#{episode.title}"
         puts "#{episode.short_des}"
+        puts "\nIf you would like to learn more about this episode, enter 'more'. To see full list, enter 'list', or type 'exit'."
+        input = gets.strip
+          if input == "more"
+              episode.content
+              #puts "Would you like to listen to this episode? Enter 'listen'"
+              puts "Would you like to see the full episode list again? Enter 'list'."
+              puts "Or enter 'exit'."
+          elsif input == "list"
+            print_episodes
+            options
+          else input == "exit"
+            exit
+          end
       end
     end
   end
