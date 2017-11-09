@@ -22,18 +22,19 @@ class Newbie::CLI
         puts "#{episode.title}"
         puts "#{episode.short_des}"
         puts "\nIf you would like to learn more about this episode, enter 'more'. To see full list, enter 'list', or type 'exit'."
-        input = gets.strip
-          if input == "more"
-              episode.content
-              #puts "Would you like to listen to this episode? Enter 'listen'"
-              puts "Would you like to see the full episode list again? Enter 'list'."
-              puts "Or enter 'exit'."
-          elsif input == "list"
-            print_episodes
-            options
-          else input == "exit"
-            exit
-          end
+      answer = gets.strip
+        case answer
+        when "more"
+          episode.content
+          puts "\nWould you like to see the full episode list again? Enter 'list'."
+          puts "Or enter 'exit'."
+        when "list"
+          print_episodes
+        when "exit"
+          break
+        else
+          "That doesn't look like a valid entry. Please enter an episode number, 'list', or 'exit'."
+        end
       end
     end
   end
