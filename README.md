@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-Run: newbie after installing the gem.
+Run: newbie after installing the gem and follow the prompts.
 
 ## Development
 
