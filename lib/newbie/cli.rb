@@ -20,8 +20,10 @@ class Newbie::CLI
       input = gets.strip
         if input == "list"
           print_episodes
-        else input.to_i <= num_episodes
+        elsif input.to_i <= num_episodes
           list_episode_range(input.to_i)
+        else
+          exit
         end
       puts "\nWhich episode would you like to learn more about? Please enter the episode number:"
       input = gets.strip
@@ -33,7 +35,7 @@ class Newbie::CLI
   end
 
   def list_episode_range(range)
-     puts "Episodes ranging from #{range} to #{range+50}" #this doesn't quite work when range+50 is > num_episodes
+     puts "Episodes ranging from #{range} to #{range+49}" #this doesn't quite work when range+50 is > num_episodes
      puts " "
      Newbie::Episode.all.reverse[range-1, 50].each do |episode|
        puts "#{episode.title}"
@@ -49,8 +51,11 @@ class Newbie::CLI
      input = gets.strip.downcase
       if input == "more"
          episode.content
-      else input == "list"
+      elsif input == "list"
        print_episodes
+     else
+       puts "See you next time, newbie"
+       exit
      end
    end
 end
