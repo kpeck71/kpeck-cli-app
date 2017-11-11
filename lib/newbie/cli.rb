@@ -58,10 +58,10 @@ class Newbie::CLI
   end
 
   def list_episode_range(range)
-    puts "Episodes ranging from #{range}"
-    puts " "
-    Newbie::Episode.all[-(range-1), 49].each.with_index(range) do |episode, index|
-      puts "#{index}. #{episode.title}"
-    end
-  end
+     puts "Episodes ranging from #{range} to #{range+50}"
+     puts " "
+     Newbie::Episode.all.reverse[range-1, 50].each do |episode|
+       puts "#{episode.title}"
+     end
+   end
 end
