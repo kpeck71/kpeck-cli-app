@@ -1,6 +1,7 @@
 class Newbie::CLI
   def call
     Newbie::Scraper.new.scrape_episodes
+    puts "Welcome to the Code Newbie podcast episode guide!"
     options
   end
 
@@ -17,7 +18,6 @@ class Newbie::CLI
       input = gets.strip.to_i #this changes 1-50 to just the integer 1
 
       list_episode_range(input)
-
       puts "\nWhich episode would you like to learn more about? Please enter the episode number:"
       num_episodes = Newbie::Episode.all.size
       answer = gets.strip
@@ -25,37 +25,20 @@ class Newbie::CLI
         episode = Newbie::Episode.all[-(answer.to_i)] #make sure 0 is not a valid entry
         puts "#{episode.title}"
         puts "#{episode.short_des}"
-        puts "\nIf you would like to learn more about this episode, enter 'more'. To see full list of episodes again, enter 'list', or type 'exit'."
+        puts "\nIf you would like to learn more about this episode, enter 'more' or type 'exit'."
         puts " "
-      elsif 0 || answer > num_episodes || answer !="exit"
+      else 0 || answer > num_episodes
         puts "This is not a valid entry. Please enter restart to try again."
-      elsif answer == "exit"
-        exit
       end
-      #else "not a valid entry. How to get it to restart and accept other episode numbers?"
       input = gets.strip
       case input
       when "more"
           episode.content
-          puts "\nWould you like to see the full episode list again? Enter 'list'."
-          puts "Or enter 'exit'."
-            answer2 = gets.strip #downcase?
-            if answer2 == "list"
-              print_episodes
-              puts "Please enter an episode number."
-            else answer2 == "exit"
-              exit
-            end
-      when "list"
-          print_episodes
-          puts "Please enter an episode number."
-      when "exit"
-        puts "See you next time, newbie"
-        exit
       else
           "That doesn't look like a valid entry. Please enter a valid episode number, 'list', or 'exit'."
       end
     end
+    puts "See you next time, newbie"
   end
 
   def list_episode_range(range)
