@@ -50,6 +50,7 @@ class Newbie::CLI
           print_episodes
           puts "Please enter an episode number."
       when "exit"
+        puts "See you next time, newbie"
         exit
       else
           "That doesn't look like a valid entry. Please enter a valid episode number, 'list', or 'exit'."
