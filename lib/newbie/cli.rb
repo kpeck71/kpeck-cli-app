@@ -14,8 +14,12 @@ class Newbie::CLI
  def options
     input = nil
     while input != "exit"
-      puts " "
-      puts "Which episode would you like to learn more about? Please enter the episode number:"
+      puts "\nWhich set of episodes would like to like to see? Enter 1-50, 51-100, 101-150, or 151 and up."
+      input = gets.strip.to_i #this changes 1-50 to just the integer 1
+
+      list_episode_range(input)
+
+      puts "\nWhich episode would you like to learn more about? Please enter the episode number:"
       num_episodes = Newbie::Episode.all.size
       answer = gets.strip
       if answer.to_i <= num_episodes && answer.to_i != 0
@@ -51,6 +55,14 @@ class Newbie::CLI
       else
           "That doesn't look like a valid entry. Please enter a valid episode number, 'list', or 'exit'."
       end
+    end
+  end
+
+  def list_episode_range(range)
+    puts "Episodes ranging from #{range}"
+    puts " "
+    Newbie::Episode.all[-(range-1), 49].each.with_index(range) do |episode, index|
+      puts "#{index}. #{episode.title}"
     end
   end
 end
