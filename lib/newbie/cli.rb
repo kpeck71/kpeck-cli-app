@@ -33,7 +33,7 @@ class Newbie::CLI
   end
 
   def list_episode_range(range)
-     puts "Episodes ranging from #{range} to #{range+50}"
+     puts "Episodes ranging from #{range} to #{range+50}" #this doesn't quite work when range+50 is > num_episodes
      puts " "
      Newbie::Episode.all.reverse[range-1, 50].each do |episode|
        puts "#{episode.title}"
@@ -49,7 +49,7 @@ class Newbie::CLI
      input = gets.strip.downcase
       if input == "more"
          episode.content
-      else input.downcase == "list"
+      else input == "list"
        print_episodes
      end
    end
