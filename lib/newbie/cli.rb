@@ -20,7 +20,7 @@ class Newbie::CLI
       input = gets.strip
         if input == "list"
           print_episodes
-        else
+        else input.to_i <= num_episodes
           list_episode_range(input.to_i)
         end
       puts "\nWhich episode would you like to learn more about? Please enter the episode number:"
