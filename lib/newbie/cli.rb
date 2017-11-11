@@ -21,26 +21,24 @@ class Newbie::CLI
       if input != "list"
         list_episode_range(input.to_i)
         puts "\nWhich episode would you like to learn more about? Please enter the episode number:"
-        input = gets.strip
-        if  input == "0" || input.to_i > num_episodes
-          puts "This is not a valid entry. Please enter restart to try again."
-        else input.to_i <= num_episodes && input.to_i != 0 #make separate list_episode method?
-          episode = Newbie::Episode.all[-(input.to_i)] #make sure 0 is not a valid entry
-          puts "#{episode.title}"
-          puts "#{episode.short_des}"
-          puts "\nIf you would like to learn more about this episode, enter 'more' or type 'exit'."
-          puts " "
-        end
-        input = gets.strip.downcase
-        if input == "more"
-          episode.content
-          "Would you like to see more episodes? Enter 'Y' or exit."
-        end
-
-      else input.downcase == "list"
+          input = gets.strip
+          if input.to_i <= num_episodes #make this a separate list_episode method?
+            episode = Newbie::Episode.all[-(input.to_i)] #make sure 0 is not a valid entry
+            puts "#{episode.title}"
+            puts "#{episode.short_des}"
+            puts "\nIf you would like to learn more about this episode, enter 'more' or type 'exit'."
+            puts " "
+          else
+            puts "This is not a valid episode number."
+          end
+            input = gets.strip.downcase
+            if input == "more"
+              episode.content
+            end
+        else input.downcase == "list"
           print_episodes
+        end
       end
-    end
     puts "See you next time, newbie"
   end
 
