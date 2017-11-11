@@ -17,26 +17,16 @@ class Newbie::CLI
     while input != "exit"
       puts "\nWhich set of episodes would like to like to see? Enter 1-50, 51-100, 101-150, or 151 and up."
       puts "For a full list of all #{num_episodes} episodes, enter 'list'."
-      input = gets.strip #this changes a string like "1-50" to the integer 1
-      if input != "list"
-        list_episode_range(input.to_i)
-        puts "\nWhich episode would you like to learn more about? Please enter the episode number:"
-          input = gets.strip
-          if input.to_i <= num_episodes #make this a separate list_episode method?
-            episode = Newbie::Episode.all[-(input.to_i)] #make sure 0 is not a valid entry
-            puts "#{episode.title}"
-            puts "#{episode.short_des}"
-            puts "\nIf you would like to learn more about this episode, enter 'more' or type 'exit'."
-            puts " "
-          else
-            puts "This is not a valid episode number."
-          end
-            input = gets.strip.downcase
-            if input == "more"
-              episode.content
-            end
-        else input.downcase == "list"
+      input = gets.strip
+        if input == "list"
           print_episodes
+        else
+          list_episode_range(input.to_i)
+        end
+      puts "\nWhich episode would you like to learn more about? Please enter the episode number:"
+      input = gets.strip
+        if input.to_i <= num_episodes #make this a separate list_episode method?
+          list_episode(input)
         end
       end
     puts "See you next time, newbie"
@@ -50,7 +40,17 @@ class Newbie::CLI
      end
    end
 
-  #  def list_episode(number)
-  #
-  #  end
+   def list_episode(input)
+     episode = Newbie::Episode.all[-(input.to_i)] #make sure 0 is not a valid entry
+     puts "#{episode.title}"
+     puts "#{episode.short_des}"
+     puts "\nIf you would like to learn more about this episode, enter 'more' or type 'exit'."
+     puts " "
+     input = gets.strip.downcase
+      if input == "more"
+         episode.content
+      else input.downcase == "list"
+       print_episodes
+     end
+   end
 end
