@@ -1,7 +1,6 @@
 class Newbie::CLI
   def call
     Newbie::Scraper.new.scrape_episodes
-    print_episodes
     options
   end
 
