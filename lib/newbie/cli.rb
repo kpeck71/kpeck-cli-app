@@ -27,7 +27,7 @@ class Newbie::CLI
         end
       puts "\nWhich episode would you like to learn more about? Please enter the episode number:"
       input = gets.strip
-        if input.to_i <= num_episodes #make this a separate list_episode method?
+        if input.to_i <= num_episodes 
           list_episode(input)
         end
       end
